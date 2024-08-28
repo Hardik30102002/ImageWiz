@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { preview } from '../assets';
-import { getRandomPrompt } from '../utils';
-import { FormField, Loader } from '../components';
 import axios from "axios";
+import { preview } from '../assets';
+import { FormField, Loader } from '../components';
+import { getRandomPrompt } from '../utils';
 
 const CreatePost = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const CreatePost = () => {
   //   if (form.prompt) {
   //     try {
   //       setGeneratingImg(true);
-  //       const response = await fetch('http://localhost:8080', {
+  //       const response = await fetch('https://imagewiz-a5a1.onrender.com', {
   //         method: 'POST',
   //         headers: {
   //           'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ const CreatePost = () => {
   const generateImage = async()=>{
     try {
       setGeneratingImg(true);
-      const response = await axios.post("http://localhost:8080/api/v1/dalle/",{
+      const response = await axios.post("https://imagewiz-a5a1.onrender.com/api/v1/dalle/",{
         prompt: form.prompt
       });
       console.log("LIMEWIRE Response:",response.data);
@@ -72,7 +72,7 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        const response = await fetch('http://localhost:8080/api/v1/post', {
+        const response = await fetch('https://imagewiz-a5a1.onrender.com/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
